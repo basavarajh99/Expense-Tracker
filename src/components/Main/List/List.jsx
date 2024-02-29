@@ -7,7 +7,7 @@ import useStyles from './styles';
 
 const List = () => {
     const classes = useStyles();
-    const {transactions ,deleteTransaction } = useContext(ExpenseTrackerContext);
+    const {transactions, deleteTransaction } = useContext(ExpenseTrackerContext);
     
     // const transactions = [
     //     {id: 1, type: "Income", category: "Salary", amount: 50, date:"Mon Jul 18 2022"},
