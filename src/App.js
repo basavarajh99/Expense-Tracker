@@ -1,32 +1,26 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { Grid } from '@material-ui/core';
 
-import { useSpeechContext } from "@speechly/react-client";
-import { PushToTalkButton, PushToTalkButtonContainer } from '@speechly/react-ui';
 
 import { Details, Main } from './components';
-import useStyles from './styles';
+import useStyles from './styles'; //imported as a hook
 
 const App = () => {
-  const classes = useStyles();
-  const { listening, segment } = useSpeechContext();
-  const main = useRef(null)
+  const classes = useStyles(); //call the hooks to use
 
-  const executeScroll = () => main.current.scrollIntoView()
-
-  useEffect(() => {
-    if (listening) {
-      executeScroll();
-    }
-  }, [segment]);
-
+  /*
+    Instead of creating two different Income and Expense components, We have created a single <Details />
+    component and called it two times passing Income and Expense as two different props In Details component.
+    Which makes code reusable and avoids Code redundancy.
+  */
   return (
     <div>
-      <Grid className={classes.grid} container spacing={0} alignItems="center" justify="center" style={{ height: '100vh' }}>
+      <Grid className={classes.grid} container spacing={0} alignItems="center" justifyContent="center" 
+        style={{ height: '100vh' }}>
         <Grid item xs={12} sm={4} className={classes.mobile}>
           <Details title="Income" />
         </Grid>
-        <Grid ref={main} item xs={12} sm={3} className={classes.main}>
+        <Grid item xs={12} sm={3} className={classes.main}>
           <Main />
         </Grid>
         <Grid item xs={12} sm={4} className={classes.desktop}>
